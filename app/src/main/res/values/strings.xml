@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Workout App</string>
+    <string name="button_mon">Pull (Monday)</string>
+    <string name="button_wed">Push (Wednesday)</string>
+    <string name="button_fri">Legs (Friday)</string>
+    <string name="button_sat">Abs (Saturday)</string>
+    <string name="reps">Number of Reps</string>
+    <string name="run">Run 5 mins</string>
+    <string name="workoutPrompt">Choose a workout:</string>
+    <string name="Pull1">Deadlift</string>
+    <string name="Pull2">Pull-ups</string>
+    <string name="Pull3">Seated Rows</string>
+    <string name="Pull4">Face Pulls</string>
+    <string name="Pull5">Hammer Curls</string>
+    <string name="Pull6">EZ Curls</string>
+    <string name="Pull7">Forearm Curls</string>
+    <string name="Pull8">Tuck ups</string>
+    <string name="Push1">Bench Press</string>
+    <string name="Push2">Military Press</string>
+    <string name="Push3">DB Incline Bench Press</string>
+    <string name="Push4">Tricep Pushdown</string>
+    <string name="Push5">Lateral Shoulder Raises</string>
+    <string name="Push6">French Press</string>
+    <string name="Push7">Frontal Shoulder Raises</string>
+    <string name="Push8">Forearm Extensions</string>
+    <string name="Push9">Scissor Kicks</string>
+    <string name="Legs1">Squat</string>
+    <string name="Legs2">Romanian Deadlift</string>
+    <string name="Legs3">Leg Press</string>
+    <string name="Legs4">Laying Leg Curls</string>
+    <string name="Legs5">Calf Raises</string>
+    <string name="Legs6">Lunges</string>
+    <string name="Legs7">Planks</string>
+    <string name="repPrompt">Number of Reps</string>
+    <string name="warmup">Warmup</string>
+    <string name="buttonDone">Done</string>
+</resources>
