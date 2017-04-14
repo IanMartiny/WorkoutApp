@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -22,22 +23,31 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String EXERCISES_COLUMN_INCREASE = "increase";
     public static final String EXERCISES_COLUMN_MIN_REP = "minrep";
     public static final String EXERCISES_COLUMN_MAX_REP = "maxrep";
+    public static final String EXERCISES_COLUMN_NUM_SETS = "numsets";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
+        SQLiteDatabase db = this.getWritableDatabase();
+/*        db.execSQL(
+                "create table if not exists " + EXERCISES_TABLE_NAME +
+                        "(id integer primary key, " + EXERCISES_COLUMN_EXERCISE + " text, " +
+                        EXERCISES_COLUMN_WEIGHT + " integer, " +
+                        EXERCISES_COLUMN_INCREASE + " integer, " +
+                        EXERCISES_COLUMN_MIN_REP + " integer, " +
+                        EXERCISES_COLUMN_MAX_REP + " integer, " +
+                        EXERCISES_COLUMN_NUM_SETS + " integer)");*/
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // TODO Auto-generated method stub
         db.execSQL(
                 "create table " + EXERCISES_TABLE_NAME +
-                        "(id integer primary key, " + EXERCISES_COLUMN_EXERCISE + " text," +
-                        EXERCISES_COLUMN_WEIGHT + " integer," +
-                        EXERCISES_COLUMN_INCREASE + " integer," +
-                        EXERCISES_COLUMN_MIN_REP + " integer," +
-                        EXERCISES_COLUMN_MAX_REP + " integer)"
-        );
+                        "(id integer primary key, " + EXERCISES_COLUMN_EXERCISE + " text, " +
+                        EXERCISES_COLUMN_WEIGHT + " integer, " +
+                        EXERCISES_COLUMN_INCREASE + " integer, " +
+                        EXERCISES_COLUMN_MIN_REP + " integer, " +
+                        EXERCISES_COLUMN_MAX_REP + " integer, " +
+                        EXERCISES_COLUMN_NUM_SETS + " integer)");
     }
 
     @Override
@@ -48,7 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertWorkout (String exercise, int weight, int increase,
-                                  int minRep, int maxRep) {
+                                  int minRep, int maxRep, int numSets) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(EXERCISES_COLUMN_EXERCISE, exercise);
@@ -56,8 +66,24 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(EXERCISES_COLUMN_INCREASE, increase);
         contentValues.put(EXERCISES_COLUMN_MIN_REP, minRep);
         contentValues.put(EXERCISES_COLUMN_MAX_REP, maxRep);
-        db.insert(EXERCISES_TABLE_NAME, null, contentValues);
+        contentValues.put(EXERCISES_COLUMN_NUM_SETS, numSets);
+        db.insertOrThrow(EXERCISES_TABLE_NAME, null, contentValues);
         return true;
+    }
+
+    public int getId(String exName){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res;
+        try {
+            res = db.rawQuery("select * from " + EXERCISES_TABLE_NAME + " where " +
+                    EXERCISES_COLUMN_EXERCISE + "=\"" + exName + "\";", null);
+            res.moveToFirst();
+            return res.getInt(res.getColumnIndex("id"));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public Cursor getData(int id) {
@@ -66,10 +92,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getExcercise(String exercise) {
+    public Cursor getExercise(String exercise) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from " + EXERCISES_TABLE_NAME + " where " +
-                EXERCISES_COLUMN_EXERCISE + "="+exercise+"", null );
+                EXERCISES_COLUMN_EXERCISE + "=\""+exercise+"\";", null );
         return res;
     }
 
@@ -81,7 +107,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean updateWorkout (Integer id, String exercise, int weight, int increase,
-                                  int minRep, int maxRep) {
+                                  int minRep, int maxRep, int numSets) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(EXERCISES_COLUMN_EXERCISE, exercise);
@@ -89,6 +115,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(EXERCISES_COLUMN_INCREASE, increase);
         contentValues.put(EXERCISES_COLUMN_MIN_REP, minRep);
         contentValues.put(EXERCISES_COLUMN_MAX_REP, maxRep);
+        contentValues.put(EXERCISES_COLUMN_NUM_SETS, numSets);
         db.update(EXERCISES_TABLE_NAME, contentValues, "id = ? ", new String[] { Integer.toString(id) } );
         return true;
     }

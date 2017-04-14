@@ -34,4 +34,15 @@
     <string name="repPrompt">Number of Reps</string>
     <string name="warmup">Warmup</string>
     <string name="buttonDone">Done</string>
+
+    <string name="enterWeight">Enter Weight:</string>
+    <string name="enterWeightIncrease">Increase amount:</string>
+    <string name="enterMinReps">Enter Min Reps:</string>
+    <string name="enterMaxReps">Enter Max Reps:</string>
+    <string name="enterNumSets">Enter Number of sets:</string>
+    <string name="weight">Weight</string>
+    <string name="reps2">Reps</string>
+    <string name="sets">Sets</string>
+    <string name="star">*</string>
+    <string name="change">change values</string>
 </resources>

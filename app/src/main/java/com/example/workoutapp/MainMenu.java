@@ -2,62 +2,59 @@ package com.example.workoutapp;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainMenu extends AppCompatActivity {
     public static String WORKOUT_DAY = "com.example.myfirstapp.MESSAGE";
-    private DBHelper workoutDatabase;
     ArrayList<Exercise> exercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        workoutDatabase = new DBHelper(this);
     }
 
     public void startWorkout(View view) {
+        Exercise tmp;
+        Exercise[] arr;
+        exercises = new ArrayList<>();
         switch(view.getId()){
             case R.id.Pull_Button:
                 WORKOUT_DAY = "pull";
-                exercises = new ArrayList<> (Arrays.asList(new Exercise(new String[] {getString(R.string.Pull1)}),
-                        new Exercise(new String[] {getString(R.string.Pull2)}),
-                        new Exercise(new String[] {getString(R.string.Pull3)}),
-                        new Exercise(new String[] {getString(R.string.Pull4)}),
-                        new Exercise(new String[] {getString(R.string.Pull5)}),
-                        new Exercise(new String[] {getString(R.string.Pull6)}),
-                        new Exercise(new String[] {getString(R.string.Pull7)}),
-                        new Exercise(new String[] {getString(R.string.Pull8)})));
+                exercises.add(new Exercise(getString(R.string.Pull1)));
+                exercises.add(new Exercise(getString(R.string.Pull2)));
+                exercises.add(new Exercise(getString(R.string.Pull3)));
+                exercises.add(new Exercise(getString(R.string.Pull4)));
+                exercises.add(new Exercise(getString(R.string.Pull5)));
+                exercises.add(new Exercise(getString(R.string.Pull6)));
+                exercises.add(new Exercise(getString(R.string.Pull7)));
+                exercises.add(new Exercise(getString(R.string.Pull8)));
                 break;
             case R.id.Push_Button:
                 WORKOUT_DAY = "push";
-                exercises = new ArrayList<>(Arrays.asList(new Exercise(new String[] {getString(R.string.Push1)}),
-                        new Exercise(new String[] {getString(R.string.Push2)}),
-                        new Exercise(new String[] {getString(R.string.Push3)}),
-                        new Exercise(new String[] {getString(R.string.Push4),
-                                getString(R.string.Push5)}),
-                        new Exercise(new String[] {getString(R.string.Push6),
-                                getString(R.string.Push7)}),
-                        new Exercise(new String[] {getString(R.string.Push8)}),
-                        new Exercise(new String[] {getString(R.string.Push9)})));
+                exercises.add(new Exercise(getString(R.string.Push1)));
+                exercises.add(new Exercise(getString(R.string.Push2)));
+                exercises.add(new Exercise(getString(R.string.Push3)));
+                exercises.add(new Exercise(getString(R.string.Push4)));
+                exercises.add(new Exercise(getString(R.string.Push5)));
+                exercises.add(new Exercise(getString(R.string.Push6)));
+                exercises.add(new Exercise(getString(R.string.Push7)));
+                exercises.add(new Exercise(getString(R.string.Push8)));
+                exercises.add(new Exercise(getString(R.string.Push9)));
                 break;
             case R.id.Legs_Button:
                 WORKOUT_DAY = "legs";
-                exercises = new ArrayList<>(Arrays.asList(new Exercise(new String[] {getString(R.string.Legs1)}),
-                        new Exercise(new String[] {getString(R.string.Legs2)}),
-                        new Exercise(new String[] {getString(R.string.Legs3)}),
-                        new Exercise(new String[] {getString(R.string.Legs4)}),
-                        new Exercise(new String[] {getString(R.string.Legs5)}),
-                        new Exercise(new String[] {getString(R.string.Legs6)}),
-                        new Exercise(new String[] {getString(R.string.Legs7)})));
+                exercises.add(new Exercise(getString(R.string.Legs1)));
+                exercises.add(new Exercise(getString(R.string.Legs2)));
+                exercises.add(new Exercise(getString(R.string.Legs3)));
+                exercises.add(new Exercise(getString(R.string.Legs4)));
+                exercises.add(new Exercise(getString(R.string.Legs5)));
+                exercises.add(new Exercise(getString(R.string.Legs6)));
+                exercises.add(new Exercise(getString(R.string.Legs7)));
                 break;
         }
         /*try {

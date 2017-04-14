@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_workout"
@@ -17,9 +24,16 @@
         android:textSize="30sp"
         android:textColor="#000000"
         android:gravity="center"/>
+    <Button
+        android:id="@+id/changeButton"
+        android:layout_below="@id/workout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="changeWorkout"
+        android:text="@string/change"/>
     <TextView
         android:id="@+id/warmup"
-        android:layout_below="@id/workout"
+        android:layout_below="@id/changeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -34,8 +48,7 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textColor="#707070"
-        android:gravity="center"
-        android:text="45lbs" />
+        android:gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,16 +78,17 @@
                     android:hint="@string/repPrompt"
                     android:inputType="number"/>
                 <TextView
+                    android:id="@+id/reps1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:text="/10"/>
+                    android:textSize="20sp"/>
                 <Button
                     android:id="@+id/buttonset1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:onClick="onClick"
                     android:text="@string/buttonDone"/>
             </LinearLayout>
 
@@ -95,16 +109,17 @@
                     android:hint="@string/repPrompt"
                     android:inputType="number"/>
                 <TextView
+                    android:id="@+id/reps3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:text="/10"/>
+                    android:textSize="20sp"/>
                 <Button
                     android:id="@+id/buttonset3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:onClick="onClick"
                     android:text="@string/buttonDone"/>
             </LinearLayout>
 
@@ -125,18 +140,19 @@
                     android:hint="@string/repPrompt"
                     android:inputType="number"/>
                 <TextView
+                    android:id="@+id/reps5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:text="/10"/>
+                    android:textSize="20sp"/>
                 <Button
                     android:id="@+id/buttonset5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:onClick="onClick"
                     android:text="@string/buttonDone"/>
-            </LinearLayout>-->
+            </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/Right"
@@ -160,16 +176,17 @@
                     android:hint="@string/repPrompt"
                     android:inputType="number"/>
                 <TextView
+                    android:id="@+id/reps2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:text="/10"/>
+                    android:textSize="20sp"/>
                 <Button
                     android:id="@+id/buttonset2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:onClick="onClick"
                     android:text="@string/buttonDone"/>
             </LinearLayout>
 
@@ -190,16 +207,17 @@
                     android:hint="@string/repPrompt"
                     android:inputType="number"/>
                 <TextView
+                    android:id="@+id/reps4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:text="/10"/>
+                    android:textSize="20sp"/>
                 <Button
                     android:id="@+id/buttonset4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:onClick="onClick"
                     android:text="@string/buttonDone"/>
             </LinearLayout>
 
@@ -220,19 +238,21 @@
                     android:hint="@string/repPrompt"
                     android:inputType="number"/>
                 <TextView
+                    android:id="@+id/reps6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:text="/10"/>
+                    android:textSize="20sp"/>
                 <Button
                     android:id="@+id/buttonset6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:onClick="onClick"
                     android:text="@string/buttonDone"/>
-            </LinearLayout>-->
+            </LinearLayout>
         </RelativeLayout>
-
     </LinearLayout>
 </RelativeLayout>
+</LinearLayout>
+</ScrollView>
